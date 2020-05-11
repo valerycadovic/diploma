@@ -3,7 +3,7 @@ import './App.css';
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 import { Header } from './header/Header';
 import { Container } from '@material-ui/core';
-import { Page } from './Page/Page';
+import { Page } from './page/Page';
 
 function App() {
   return (
