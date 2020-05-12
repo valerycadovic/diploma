@@ -1,3 +1,5 @@
+import { wait } from '../core/http';
+
 export interface NewsGridItemData {
   image: string;
   header: string;
@@ -5,7 +7,12 @@ export interface NewsGridItemData {
   id: number;
 }
 
-export const gridNews: NewsGridItemData[] = [
+export const getGridNews = async (): Promise<NewsGridItemData[]> => {
+  await wait(1000);
+  return gridNews;
+};
+
+const gridNews: NewsGridItemData[] = [
   {
     id: 0,
     image: 'https://s5o.ru/storage/simple/ru/edt/d3/db/63/07/rue3022a47d04.jpg',

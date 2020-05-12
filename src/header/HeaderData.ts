@@ -1,3 +1,5 @@
+import { wait } from '../core/http';
+
 export interface SubItem {
   text: string;
   id: string;
@@ -9,7 +11,13 @@ export interface TopItem {
   subItems?: SubItem[];
 }
 
-export const headerData: TopItem[] = [
+export const getHeaderData = async (): Promise<TopItem[]> => {
+  await wait(500);
+
+  return headerData;
+};
+
+const headerData: TopItem[] = [
   {
     text: 'Home',
     id: 'home',

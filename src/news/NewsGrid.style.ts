@@ -13,6 +13,14 @@ export const newsGridStyles = css`
     display: table;
     clear: both;
   }
+
+  .loading {
+    font-size: 50px;
+    position: absolute;
+    left: 43%;
+    color: black;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
 `;
 
 export const newsGridItemStyle = css`
