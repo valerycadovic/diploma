@@ -20,7 +20,6 @@ export const topMenuCss = css`
     padding-right: 20;
     :hover {
       background-color: black;
-      opacity: 70%;
     }
   }
 
@@ -43,7 +42,6 @@ export const topMenuCss = css`
     z-index: 10;
     display: none;
     background: black;
-    opacity: 100%;
   }
 
   ul span {

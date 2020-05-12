@@ -5,11 +5,23 @@ export interface NewsGridItemData {
   header: string;
   text: string;
   id: number;
+  isUrgent: boolean;
+  itemInfo?: ItemInfo;
+}
+
+export interface ItemInfo {
+  commentsCount: number;
+  userName?: string;
 }
 
 export const getGridNews = async (): Promise<NewsGridItemData[]> => {
   await wait(1000);
   return gridNews;
+};
+
+const itemInfo: ItemInfo = {
+  commentsCount: 53,
+  userName: 'Valery Chadovich',
 };
 
 const gridNews: NewsGridItemData[] = [
@@ -18,18 +30,23 @@ const gridNews: NewsGridItemData[] = [
     image: 'https://s5o.ru/storage/simple/ru/edt/d3/db/63/07/rue3022a47d04.jpg',
     header: 'Слуцк',
     text: 'Лидер чемпионата Беларуси',
+    isUrgent: true,
+    itemInfo: itemInfo,
   },
   {
     id: 1,
     image: 'https://s5o.ru/storage/simple/ru/edt/28/43/8f/14/rue04d151a259.jpg',
     header: 'В России не увидели половину финала «Ливерпуль» – «Алавес».',
     text: 'РТР включился на 63-й минуте уже при 3:3',
+    isUrgent: false,
   },
   {
     id: 2,
-    image: 'https://s5o.ru/storage/simple/ru/edt/52/37/cf/ea/rue36e87b132e.36.jpg',
+    image: 'https://therepublikofmancunia.com/wp-content/uploads/2015/05/cached.png',
     header: 'Луи сорвал куш.',
     text: 'Ван Гал позвал кипера в «Аякс», узнав про него за картами',
+    isUrgent: true,
+    itemInfo: itemInfo,
   },
   {
     id: 3,
@@ -38,6 +55,8 @@ const gridNews: NewsGridItemData[] = [
     header: 'Эрик Кантона мог перейти в Ливерпуль',
     text:
       'Легенда "Ливерпуля" Грэм Сунесс рассказал, что Эрик Кантона может перейти в мерсисайдский клуб до того, как оказался в "Манчестер Юнайтед".',
+    isUrgent: false,
+    itemInfo: itemInfo,
   },
   {
     id: 4,
@@ -46,6 +65,8 @@ const gridNews: NewsGridItemData[] = [
     header: 'Франк Лебеф: «Погба играет слишком нестабильно»',
     text:
       'Бывший футболист сборной Франции Франк Лебеф считает, что игре Поля Погба в «Манчестер Юнайтед» не хватает стабильности.',
+    isUrgent: true,
+    itemInfo: itemInfo,
   },
   {
     id: 5,
@@ -54,6 +75,7 @@ const gridNews: NewsGridItemData[] = [
     header: 'Стерлинг – мусульманин? А Джеко?',
     text:
       '18 неожиданных вопросов – в новом еженедельном тесте 18 неожиданных вопросов – в новом еженедельном тесте 18 неожиданных вопросов – в новом еженедельном тесте 18 неожиданных вопросов – в новом еженедельном тесте 18 неожиданных вопросов – в новом еженедельном тесте 18 неожиданных вопросов – в новом еженедельном тесте 18 неожиданных вопросов – в новом еженедельном тесте 18 неожиданных вопросов – в новом еженедельном тесте 18 неожиданных вопросов – в новом еженедельном тесте',
+    isUrgent: false,
   },
   {
     id: 6,
@@ -61,17 +83,13 @@ const gridNews: NewsGridItemData[] = [
       'https://cdn.tribuna.com/fetch/?url=https%3A%2F%2Fss.sport-express.ru%2Fuserfiles%2Fmaterials%2F53%2F539155%2Flarge.jpg',
     header: 'Слуцк',
     text: 'Лидер чемпионата Беларуси',
-  },
-  {
-    id: 7,
-    image: 'https://s5o.ru/storage/simple/ru/edt/d3/db/63/07/rue3022a47d04.jpg',
-    header: 'Слуцк',
-    text: 'Лидер чемпионата Беларуси',
-  },
-  {
-    id: 8,
-    image: 'https://s5o.ru/storage/simple/ru/edt/d3/db/63/07/rue3022a47d04.jpg',
-    header: 'Слуцк',
-    text: 'Лидер чемпионата Беларуси',
+    isUrgent: false,
+    itemInfo: itemInfo,
   },
 ];
+
+export interface NewsDetailedData {
+  titleImage: string;
+  header: string;
+  text: string;
+}

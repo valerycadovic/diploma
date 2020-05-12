@@ -2,7 +2,7 @@
 import { jsx } from '@emotion/core';
 import { FC } from 'react';
 import { RouteComponentProps } from 'react-router-dom';
-import { NewsGrid } from '../news/NewsGrid';
+import { FlexGrid } from '../news/FlexGrid';
 
 interface RouteProps {
   name: string;
@@ -11,8 +11,7 @@ interface RouteProps {
 export const Page: FC<RouteComponentProps<RouteProps>> = ({ match }) => {
   return (
     <div>
-      {match.params.name}
-      <NewsGrid />
+      <FlexGrid />
     </div>
   );
 };
