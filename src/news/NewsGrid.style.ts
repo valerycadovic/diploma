@@ -14,6 +14,9 @@ export const flexItemStyle = css`
     :hover:not(:active) {
       opacity: 90%;
     }
+    :hover {
+      cursor: pointer;
+    }
   }
 
   .article-image {
