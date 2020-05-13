@@ -11,6 +11,9 @@ export const flexItemStyle = css`
     color: #666;
     margin: 10px;
     text-decoration: none;
+  }
+
+  .article-clickable {
     :hover:not(:active) {
       opacity: 90%;
     }

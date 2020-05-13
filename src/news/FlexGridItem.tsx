@@ -13,7 +13,7 @@ export const FlexGridItem: FC<Props> = ({ data }) => {
 
   return (
     <div css={flexItemStyle}>
-      <div className="article first-article">
+      <div className="article article-clickable">
         <figure className={imageClassName}>
           <img src={data.image} alt={data.header} />
         </figure>
@@ -21,8 +21,8 @@ export const FlexGridItem: FC<Props> = ({ data }) => {
           <h2 className="article-title">{data.header}</h2>
           <p className="article-content">{data.text}</p>
           <footer className="article-info">
-            <span>By {data.itemInfo && data.itemInfo.userName}</span>
-            <span>{data.itemInfo && data.itemInfo.commentsCount} comments</span>
+            <span>{data.itemInfo && `By ${data.itemInfo.userName}`}</span>
+            <span>{data.itemInfo && `${data.itemInfo.commentsCount} comments`}</span>
           </footer>
         </div>
       </div>

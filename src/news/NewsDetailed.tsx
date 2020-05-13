@@ -1,7 +1,55 @@
 /** @jsx jsx */
 import { jsx, css } from '@emotion/core';
-import { FC } from 'react';
+import { FC, useState, useEffect } from 'react';
+import { RouteComponentProps } from 'react-router-dom';
+import { flexItemStyle } from './NewsGrid.style';
+import { NewsItemDetailedView, getDetailedNews } from './NewsGridItemData';
+import { Loading } from '../core/Loading';
 
-export const NewsDetailed: FC = () => {
-  return <div>Detailed</div>;
+interface RouteParams {
+  newsId: string;
+}
+
+export const NewsDetailed: FC<RouteComponentProps<RouteParams>> = ({ match }) => {
+  const [news, setNews] = useState<NewsItemDetailedView>();
+  const [loading, setLoading] = useState<boolean>(false);
+
+  useEffect(() => {
+    const doAsync = async (): Promise<void> => {
+      setLoading(true);
+
+      const result = await getDetailedNews(match.params.newsId);
+      setNews(result);
+
+      setLoading(false);
+    };
+
+    doAsync();
+  }, [match.params.newsId, news]);
+
+  return (
+    <div css={flexItemStyle}>
+      <div
+        css={css`
+          display: flex;
+        `}
+      >
+        {loading ? (
+          <Loading>Loading...</Loading>
+        ) : news === null || news === undefined ? (
+          <span>News is nonexistent!</span>
+        ) : (
+          <div className="article">
+            <figure className="article-image is-16by9">
+              <img src={news.image} alt={news.id} />
+            </figure>
+            <div className="article-body">
+              <h2 className="article-title">{news.header}</h2>
+              <p className="article-content">{news.text}</p>
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
+  );
 };

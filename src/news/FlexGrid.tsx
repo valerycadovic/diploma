@@ -5,6 +5,7 @@ import { FlexGridItem } from './FlexGridItem';
 import { NewsGridItemData, getGridNews } from './NewsGridItemData';
 import { flexGridStyle } from './NewsGrid.style';
 import { Loading } from '../core/Loading';
+import { StyledLink } from '../header/StyledLink';
 
 export const FlexGrid: FC = () => {
   const [loading, setLoading] = useState<boolean>(false);
@@ -34,14 +35,18 @@ export const FlexGrid: FC = () => {
               {news
                 ?.filter((item) => item.isUrgent)
                 .map((item) => (
-                  <FlexGridItem data={item} />
+                  <StyledLink to={`/news/${item.id}`}>
+                    <FlexGridItem data={item} />
+                  </StyledLink>
                 ))}
             </section>
             <section className="column">
               {news
                 ?.filter((item) => !item.isUrgent)
                 .map((item) => (
-                  <FlexGridItem data={item} />
+                  <StyledLink to={`/news/${item.id}`}>
+                    <FlexGridItem data={item} />
+                  </StyledLink>
                 ))}
             </section>
           </Fragment>
