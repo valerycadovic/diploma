@@ -5,6 +5,7 @@ import { RouteComponentProps } from 'react-router-dom';
 import { flexItemStyle } from './NewsGrid.style';
 import { NewsItemDetailedView, getDetailedNews } from './NewsGridItemData';
 import { Loading } from '../core/Loading';
+import ReactMarkdown from 'react-markdown';
 
 interface RouteParams {
   newsId: string;
@@ -45,7 +46,9 @@ export const NewsDetailed: FC<RouteComponentProps<RouteParams>> = ({ match }) =>
             </figure>
             <div className="article-body">
               <h2 className="article-title">{news.header}</h2>
-              <p className="article-content">{news.text}</p>
+              <p className="article-content">
+                <ReactMarkdown source={news.text} escapeHtml={false} />
+              </p>
             </div>
           </div>
         )}
