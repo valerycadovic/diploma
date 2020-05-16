@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx, css } from '@emotion/core';
+import { jsx } from '@emotion/core';
 import { FC, useState, useEffect, Fragment } from 'react';
 import { FlexGridItem } from './FlexGridItem';
 import { NewsGridItemData, getGridNews } from './NewsGridItemData';

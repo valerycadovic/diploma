@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx, css } from '@emotion/core';
+import { jsx } from '@emotion/core';
 import { FC } from 'react';
 import { NewsGridItemData } from './NewsGridItemData';
 import { flexItemStyle } from './NewsGrid.style';
