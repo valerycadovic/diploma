@@ -6,14 +6,23 @@ import { flexItemStyle } from './NewsGrid.style';
 import { NewsItemDetailedView, getDetailedNews } from './NewsGridItemData';
 import { Loading } from '../core/Loading';
 import ReactMarkdown from 'react-markdown';
+import * as Disqus from 'disqus-react';
 
 interface RouteParams {
   newsId: string;
 }
 
+const disqusShortName = 'futbol-naviny';
+
 export const NewsDetailed: FC<RouteComponentProps<RouteParams>> = ({ match }) => {
   const [news, setNews] = useState<NewsItemDetailedView>();
   const [loading, setLoading] = useState<boolean>(false);
+
+  const disqusConfig = {
+    url: `http://localhost:3001/${match.url}`,
+    identifier: match.params.newsId,
+    title: match.params.newsId,
+  };
 
   useEffect(() => {
     const doAsync = async (): Promise<void> => {
@@ -49,6 +58,13 @@ export const NewsDetailed: FC<RouteComponentProps<RouteParams>> = ({ match }) =>
               <p className="article-content">
                 <ReactMarkdown source={news.text} escapeHtml={false} />
               </p>
+            </div>
+            <div
+              css={css`
+                padding: 20px;
+              `}
+            >
+              <Disqus.DiscussionEmbed shortname={disqusShortName} config={disqusConfig} key={match.params.newsId} />
             </div>
           </div>
         )}
