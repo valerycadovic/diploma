@@ -15,6 +15,7 @@ export const NewsForm: FC = () => {
       image: values.image,
       listViewContent: values.listViewContent,
       isUrgent: values.isUrgent,
+      tags: values.tags,
     });
 
     return { success: !!result };
@@ -42,6 +43,7 @@ export const NewsForm: FC = () => {
       <Field name="image" label="Heared Image URL" type="Text" />
       <Field name="detailedViewContent" label="Detailed View Content" type="Markdown" />
       <Field name="isUrgent" label="Is Urgent?" type="Checkbox" />
+      <Field name="tags" label="Select tags for the post" type="Tags" />
     </Form>
   );
 };

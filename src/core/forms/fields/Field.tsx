@@ -4,6 +4,8 @@ import { FC, useContext, useState, ChangeEvent } from 'react';
 import { FormContext } from '../Form';
 import ReactMde from 'react-mde';
 import ReactMarkdown from 'react-markdown';
+import TagsInput from 'react-tagsinput';
+import 'react-tagsinput/react-tagsinput.css';
 
 interface Props {
   name: string;
@@ -15,8 +17,9 @@ export const Field: FC<Props> = ({ name, label, type }) => {
   const { setValue, touched, setTouched, validate } = useContext(FormContext);
 
   const [markdownTab, setMarkdownTab] = useState<'write' | 'preview'>('write');
+  const [tags, setTags] = useState<string[]>([]);
 
-  const handleChange = (value: string) => {
+  const handleChange = (value: any) => {
     if (setValue) {
       setValue(name, value);
     }
@@ -30,7 +33,12 @@ export const Field: FC<Props> = ({ name, label, type }) => {
   };
 
   const handleCheckboxChange = (e: ChangeEvent<HTMLInputElement>) => {
-    handleChange(e.currentTarget.checked.toString());
+    handleChange(e.currentTarget.checked);
+  };
+
+  const handleTagsChange = (tags: string[]) => {
+    setTags(tags.filter((v, i, a) => a.indexOf(v) === i));
+    handleChange(tags);
   };
 
   const handleBlur = () => {
@@ -98,6 +106,7 @@ export const Field: FC<Props> = ({ name, label, type }) => {
               onChange={handleCheckboxChange}
             />
           )}
+          {type === 'Tags' && <TagsInput value={tags} onChange={handleTagsChange} />}
           {errors[name] &&
             errors[name].length > 0 &&
             errors[name].map((error) => (

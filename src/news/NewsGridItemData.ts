@@ -27,6 +27,7 @@ export interface PostNewsData {
   listViewContent: string;
   detailedViewContent: string;
   isUrgent: boolean;
+  tags: string[];
   created: Date;
 }
 
