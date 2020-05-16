@@ -5,7 +5,7 @@ import { Header } from './header/Header';
 import { Container } from '@material-ui/core';
 import { Page } from './page/Page';
 import { NewsDetailed } from './news/NewsDetailed';
-import { NewsForm } from './page/NewsForm';
+import { NewsForm } from './news/NewsForm';
 
 function App() {
   return (

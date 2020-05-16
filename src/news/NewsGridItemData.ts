@@ -21,6 +21,15 @@ export interface NewsItemDetailedView {
   text: string;
 }
 
+export interface PostNewsData {
+  image: string;
+  header: string;
+  listViewContent: string;
+  detailedViewContent: string;
+  isUrgent: boolean;
+  created: Date;
+}
+
 export const getGridNews = async (): Promise<NewsGridItemData[]> => {
   await wait(1000);
   return gridNews;
@@ -29,6 +38,31 @@ export const getGridNews = async (): Promise<NewsGridItemData[]> => {
 export const getDetailedNews = async (newsId: string): Promise<NewsItemDetailedView> => {
   await wait(500);
   return detailedNews.filter((n) => n.id === newsId)[0];
+};
+
+export const postNews = async (data: PostNewsData): Promise<NewsItemDetailedView | undefined> => {
+  await wait(500);
+
+  const listView: NewsGridItemData = {
+    id: gridNews.length.toString(),
+    header: data.header,
+    text: data.listViewContent,
+    itemInfo,
+    image: data.image,
+    isUrgent: data.isUrgent,
+  };
+
+  const detailedView: NewsItemDetailedView = {
+    header: data.header,
+    image: data.image,
+    text: data.detailedViewContent,
+    id: listView.id,
+  };
+
+  gridNews.push(listView);
+  detailedNews.push(detailedView);
+
+  return detailedView;
 };
 
 export const itemInfo: ItemInfo = {

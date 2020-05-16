@@ -8,7 +8,7 @@ import ReactMarkdown from 'react-markdown';
 interface Props {
   name: string;
   label?: string;
-  type?: 'Tags' | 'Markdown' | 'Text' | 'TextArea';
+  type?: 'Tags' | 'Markdown' | 'Text' | 'TextArea' | 'Checkbox';
 }
 
 export const Field: FC<Props> = ({ name, label, type }) => {
@@ -27,6 +27,10 @@ export const Field: FC<Props> = ({ name, label, type }) => {
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLTextAreaElement>) => {
     handleChange(e.currentTarget.value);
+  };
+
+  const handleCheckboxChange = (e: ChangeEvent<HTMLInputElement>) => {
+    handleChange(e.currentTarget.checked.toString());
   };
 
   const handleBlur = () => {
@@ -84,6 +88,14 @@ export const Field: FC<Props> = ({ name, label, type }) => {
               value={values[name] === undefined ? '' : values[name]}
               onChange={handleInputChange}
               onBlur={handleBlur}
+            />
+          )}
+          {type === 'Checkbox' && (
+            <input
+              type={type.toLowerCase()}
+              id={name}
+              value={values[name] === undefined ? '' : values[name]}
+              onChange={handleCheckboxChange}
             />
           )}
           {errors[name] &&
