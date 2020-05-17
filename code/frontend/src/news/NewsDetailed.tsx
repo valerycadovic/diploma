@@ -15,11 +15,11 @@ interface RouteParams {
 const disqusShortName = 'futbol-naviny';
 
 export const NewsDetailed: FC<RouteComponentProps<RouteParams>> = ({ match }) => {
-  const [news, setNews] = useState<NewsItemDetailedView>();
+  const [news, setNews] = useState<NewsItemDetailedView | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
 
   const disqusConfig = {
-    url: `http://localhost:3001/${match.url}`,
+    url: `http://localhost:3000/${match.url}`,
     identifier: match.params.newsId,
     title: match.params.newsId,
   };
@@ -35,7 +35,7 @@ export const NewsDetailed: FC<RouteComponentProps<RouteParams>> = ({ match }) =>
     };
 
     doAsync();
-  }, [match.params.newsId, news]);
+  }, [match.params.newsId]);
 
   return (
     <div css={flexItemStyle}>
@@ -56,7 +56,7 @@ export const NewsDetailed: FC<RouteComponentProps<RouteParams>> = ({ match }) =>
             <div className="article-body">
               <h2 className="article-title">{news.header}</h2>
               <p className="article-content">
-                <ReactMarkdown source={news.text} escapeHtml={false} />
+                <ReactMarkdown source={news.detailedViewContent} escapeHtml={false} />
               </p>
             </div>
             <div

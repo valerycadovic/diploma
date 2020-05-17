@@ -13,8 +13,7 @@ function App() {
       <Container fixed>
         <Header />
         <Switch>
-          <Redirect from="/page/home" to="/" />
-          <Route exact path="/" component={Page} />
+          <Redirect exact from="/" to="/page/home" />
           <Route path="/page/blogs" component={NewsForm} />
           <Route path="/page/:name" component={Page} />
           <Route path="/news/:newsId" component={NewsDetailed} />

@@ -19,10 +19,10 @@ export const FlexGridItem: FC<Props> = ({ data }) => {
         </figure>
         <div className="article-body">
           <h2 className="article-title">{data.header}</h2>
-          <p className="article-content">{data.text}</p>
+          <p className="article-content">{data.listViewContent}</p>
           <footer className="article-info">
-            <span>{data.itemInfo && `By ${data.itemInfo.userName}`}</span>
-            <span>{data.itemInfo && `${data.itemInfo.commentsCount} comments`}</span>
+            <span>{`By ${data.createdBy}`}</span>
+            <span>{`${data.createdOn.toLocaleDateString()} ${data.createdOn.toLocaleTimeString()}`}</span>
           </footer>
         </div>
       </div>

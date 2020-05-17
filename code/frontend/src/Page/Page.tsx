@@ -11,7 +11,7 @@ interface RouteProps {
 export const Page: FC<RouteComponentProps<RouteProps>> = ({ match }) => {
   return (
     <div>
-      <FlexGrid />
+      <FlexGrid tag={match.params.name} />
     </div>
   );
 };
