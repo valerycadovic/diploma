@@ -42,7 +42,7 @@ namespace WebApi.DataAccess
             await using var connection = new SqlConnection(_connectionString);
             await connection.OpenAsync();
 
-            return await connection.QueryAsync<NewsGetByTagResponse>(ExecNewsGetListViewsByTag);
+            return await connection.QueryAsync<NewsGetByTagResponse>(ExecNewsGetListViewsByTag, request);
         }
     }
 }

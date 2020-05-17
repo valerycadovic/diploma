@@ -8,13 +8,13 @@ namespace WebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class NewsController : ControllerBase
+    public class DetailedController : ControllerBase
     {
         #region Injects
 
         private readonly INewsRepository _newsRepository;
 
-        public NewsController(INewsRepository newsRepository)
+        public DetailedController(INewsRepository newsRepository)
         {
             _newsRepository = newsRepository;
         }
@@ -22,7 +22,7 @@ namespace WebApi.Controllers
         #endregion
 
         [HttpGet("{newsId}")]
-        public async Task<NewsGetDetailedResponse> GetDetailedNews(Guid newsId)
+        public async Task<NewsGetDetailedResponse> GetDetailedView(Guid newsId)
         {
             var request = new NewsGetDetailedRequest { NewsId = newsId };
 
