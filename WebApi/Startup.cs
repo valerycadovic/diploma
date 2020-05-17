@@ -23,12 +23,20 @@ namespace WebApi
             Configuration.AddDbUp();
 
             services.AddControllers();
+            services.AddCors(opt => opt.AddPolicy("CorsPolicy",
+                builder => builder
+                    .AllowAnyMethod()
+                    .AllowAnyHeader()
+                    .AllowCredentials()
+                    .WithOrigins(Configuration["Frontend"])));
             services.AddScoped<INewsRepository, NewsRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            app.UseCors("CorsPolicy");
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
