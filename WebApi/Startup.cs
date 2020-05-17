@@ -4,6 +4,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using WebApi.Configurations;
+using WebApi.DataAccess;
 
 namespace WebApi
 {
@@ -22,6 +23,7 @@ namespace WebApi
             Configuration.AddDbUp();
 
             services.AddControllers();
+            services.AddScoped<INewsRepository, NewsRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -2,10 +2,10 @@
 begin
 	set nocount on
 
-	select sub.Id, sub.Image, sub.Header, sub.ListViewContent, sub.CreatedOn, sub.CreatedBy
+	select sub.Id, sub.Image, sub.Header, sub.ListViewContent, sub.IsUrgent, sub.CreatedOn, sub.CreatedBy
 	from 
 	(
-		select n.Id, n.Image, n.Header, n.ListViewContent, n.CreatedOn, n.CreatedBy
+		select n.Id, n.Image, n.Header, n.ListViewContent, n.IsUrgent, n.CreatedOn, n.CreatedBy
 		from News n
 		join NewsToTags nt on nt.NewsId = n.Id
 		join Tags t on t.Id = nt.TagId
