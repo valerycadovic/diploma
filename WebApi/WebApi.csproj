@@ -6,10 +6,18 @@
 
   <ItemGroup>
     <None Remove="SqlScripts\01-Tables.sql" />
+    <None Remove="SqlScripts\02-StoredProcedures-News_Post.sql" />
+    <None Remove="SqlScripts\03-StoredProcedures-News_GetDetailed.sql" />
+    <None Remove="SqlScripts\04-StoredProcedures_News_GetListViews_ByTag.sql" />
+    <None Remove="SqlScripts\05-StoredProcedures_Tags_CreateTags.sql" />
   </ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Include="SqlScripts\01-Tables.sql" />
+    <EmbeddedResource Include="SqlScripts\02-StoredProcedures-News_Post.sql" />
+    <EmbeddedResource Include="SqlScripts\03-StoredProcedures-News_GetDetailed.sql" />
+    <EmbeddedResource Include="SqlScripts\04-StoredProcedures_News_GetListViews_ByTag.sql" />
+    <EmbeddedResource Include="SqlScripts\05-StoredProcedures_Tags_CreateTags.sql" />
   </ItemGroup>
 
   <ItemGroup>
