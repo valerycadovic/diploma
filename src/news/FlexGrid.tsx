@@ -7,7 +7,11 @@ import { flexGridStyle } from './NewsGrid.style';
 import { Loading } from '../core/Loading';
 import { StyledLink } from '../header/StyledLink';
 
-export const FlexGrid: FC = () => {
+interface Props {
+  tag: string;
+}
+
+export const FlexGrid: FC<Props> = ({ tag }) => {
   const [loading, setLoading] = useState<boolean>(false);
   const [news, setNews] = useState<NewsGridItemData[]>();
 
@@ -15,14 +19,14 @@ export const FlexGrid: FC = () => {
     const doAsync = async (): Promise<void> => {
       setLoading(true);
 
-      const result = await getGridNews();
+      const result = await getGridNews(tag);
       setNews(result);
 
       setLoading(false);
     };
 
     doAsync();
-  }, [news]);
+  }, [tag]);
 
   return (
     <div css={flexGridStyle}>
