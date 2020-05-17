@@ -22,11 +22,18 @@ namespace WebApi.Controllers
         #endregion
 
         [HttpGet("{newsId}")]
-        public async Task<NewsGetDetailedResponse> GetDetailedView(Guid newsId)
+        public async Task<ActionResult<NewsGetDetailedResponse>> GetDetailedView(Guid newsId)
         {
             var request = new NewsGetDetailedRequest { NewsId = newsId };
 
-            return await _newsRepository.GetNewsDetailedAsync(request);
+            var result = await _newsRepository.GetNewsDetailedAsync(request);
+
+            if (result == null)
+            {
+                return NotFound();
+            }
+
+            return result;
         }
     }
 }

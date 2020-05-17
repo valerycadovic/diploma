@@ -8,6 +8,8 @@ namespace WebApi.DataAccess.DataModels
 
         public string Image { get; set; }
 
+        public string Header { get; set; }
+
         public string ListViewContent { get; set; }
 
         public bool IsUrgent { get; set; }
