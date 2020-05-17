@@ -5,6 +5,7 @@
 	Header nvarchar(100) not null,
 	ListViewContent nvarchar(200) not null,
 	DetailedViewContent nvarchar(max) not null,
+	IsUrgent bit not null,
 	CreatedOn datetime2 not null,
 	CreatedBy nvarchar(100) not null,
 	ModifiedOn datetime2,
