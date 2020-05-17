@@ -62,7 +62,7 @@ begin
 			where t.Name in
 			(
 				select Name 
-				from Tags
+				from @Tags
 			)
 
 		commit

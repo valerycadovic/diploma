@@ -9,12 +9,8 @@ export const Header: FC = () => {
   const [headerData, setHeaderData] = useState<TopItem[]>();
 
   useEffect(() => {
-    const doAsync = async (): Promise<void> => {
-      const result = await getHeaderData();
-      setHeaderData(result);
-    };
-
-    doAsync();
+    const result = getHeaderData();
+    setHeaderData(result);
   }, [headerData]);
 
   return (

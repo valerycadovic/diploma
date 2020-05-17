@@ -1,5 +1,3 @@
-import { wait } from '../core/http';
-
 export interface SubItem {
   text: string;
   id: string;
@@ -11,9 +9,7 @@ export interface TopItem {
   subItems?: SubItem[];
 }
 
-export const getHeaderData = async (): Promise<TopItem[]> => {
-  await wait(500);
-
+export const getHeaderData = (): TopItem[] => {
   return headerData;
 };
 
@@ -64,9 +60,5 @@ const headerData: TopItem[] = [
       { text: 'Ukraine', id: 'ukraine' },
       { text: 'Other', id: 'other' },
     ],
-  },
-  {
-    text: 'Blogs',
-    id: 'blogs',
   },
 ];

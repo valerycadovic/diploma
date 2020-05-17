@@ -5,7 +5,6 @@ import { Header } from './header/Header';
 import { Container } from '@material-ui/core';
 import { Page } from './page/Page';
 import { NewsDetailed } from './news/NewsDetailed';
-import { NewsForm } from './news/NewsForm';
 
 function App() {
   return (
@@ -14,7 +13,6 @@ function App() {
         <Header />
         <Switch>
           <Redirect exact from="/" to="/page/home" />
-          <Route path="/page/blogs" component={NewsForm} />
           <Route path="/page/:name" component={Page} />
           <Route path="/news/:newsId" component={NewsDetailed} />
           <Route>

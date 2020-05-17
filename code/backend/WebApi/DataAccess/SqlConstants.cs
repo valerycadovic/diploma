@@ -9,8 +9,10 @@
                                             @Header = @Header,
                                             @ListViewContent = @ListViewContent,
                                             @DetailedViewContent = @DetailedViewContent,
+                                            @IsUrgent = @IsUrgent,
                                             @CreatedOn = @CreatedOn,
-                                            @CreatedBy = @CreatedBy";
+                                            @CreatedBy = @CreatedBy,
+                                            @Tags = @Tags";
 
         public const string ExecNewsGetDetailed = @"
                                             exec dbo.News_GetDetailed 
@@ -22,6 +24,6 @@
                                             @PageNumber = @PageNumber,
                                             @PageSize = @PageSize";
 
-        public static readonly (string parameterName, string typeName) TagsListType = ("@Tags", "TagsList");
+        public static readonly (string parameterName, string typeName) TagsListType = ("@Tags", "dbo.TagsList");
     }
 }

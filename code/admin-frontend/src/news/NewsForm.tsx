@@ -1,19 +1,18 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/core';
 import { FC } from 'react';
-import { Form, Values } from '../core/forms/Form';
-import { Field } from '../core/forms/fields/Field';
-import { required, minLength, maxLength } from '../core/forms/validation/Validation';
-import { postNews } from './NewsGridItemData';
+import { Values, Form } from '../form/Form';
+import { required, minLength, maxLength } from '../form/Validation';
+import { Field } from '../form/Field';
+import { postNews } from './NewsFormData';
 
 export const NewsForm: FC = () => {
   const handleSubmit = async (values: Values) => {
     const result = await postNews({
-      created: new Date(),
-      detailedViewContent: values.detailedViewContent,
-      header: values.header,
       image: values.image,
+      header: values.header,
       listViewContent: values.listViewContent,
+      detailedViewContent: values.detailedViewContent,
       isUrgent: values.isUrgent,
       tags: values.tags,
     });

@@ -2,7 +2,7 @@
 import { jsx, css } from '@emotion/core';
 import 'react-mde/lib/styles/css/react-mde-all.css';
 import { FC, createContext, useState, FormEvent } from 'react';
-import { Validator } from './validation/Validation';
+import { Validator } from './Validation';
 
 export interface Values {
   [key: string]: any;

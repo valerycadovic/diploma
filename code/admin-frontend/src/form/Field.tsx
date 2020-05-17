@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx, css } from '@emotion/core';
 import { FC, useContext, useState, ChangeEvent } from 'react';
-import { FormContext } from '../Form';
+import { FormContext } from './Form';
 import ReactMde from 'react-mde';
 import ReactMarkdown from 'react-markdown';
 import TagsInput from 'react-tagsinput';

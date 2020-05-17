@@ -28,7 +28,9 @@ namespace WebApi
                     .AllowAnyMethod()
                     .AllowAnyHeader()
                     .AllowCredentials()
-                    .WithOrigins(Configuration["Frontend"])));
+                    .WithOrigins(
+                        Configuration["Frontend"],
+                        Configuration["AdminFrontend"])));
             services.AddScoped<INewsRepository, NewsRepository>();
         }
 

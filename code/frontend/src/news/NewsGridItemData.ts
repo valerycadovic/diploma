@@ -8,7 +8,6 @@ export interface NewsGridItemData {
   isUrgent: boolean;
   createdBy: string;
   createdOn: Date;
-  itemInfo?: ItemInfo;
 }
 
 export interface NewsGridItemDataFromServer {
@@ -19,11 +18,6 @@ export interface NewsGridItemDataFromServer {
   isUrgent: boolean;
   createdBy: string;
   createdOn: string;
-}
-
-export interface ItemInfo {
-  commentsCount: number;
-  userName?: string;
 }
 
 export interface NewsItemDetailedView {
@@ -75,39 +69,3 @@ export const getDetailedNews = async (newsId: string): Promise<NewsItemDetailedV
     return null;
   }
 };
-
-export const postNews = async (data: PostNewsData): Promise<NewsItemDetailedView | undefined> => {
-  await wait(500);
-
-  const listView: NewsGridItemData = {
-    id: gridNews.length.toString(),
-    header: data.header,
-    listViewContent: data.listViewContent,
-    itemInfo,
-    image: data.image,
-    isUrgent: data.isUrgent,
-    createdBy: 'Valera Chadovich',
-    createdOn: new Date(),
-  };
-
-  const detailedView: NewsItemDetailedView = {
-    header: data.header,
-    image: data.image,
-    detailedViewContent: data.detailedViewContent,
-    id: listView.id,
-  };
-
-  gridNews.push(listView);
-  detailedNews.push(detailedView);
-
-  return detailedView;
-};
-
-export const itemInfo: ItemInfo = {
-  commentsCount: 53,
-  userName: 'Valery Chadovich',
-};
-
-const detailedNews: NewsItemDetailedView[] = [];
-
-const gridNews: NewsGridItemData[] = [];
